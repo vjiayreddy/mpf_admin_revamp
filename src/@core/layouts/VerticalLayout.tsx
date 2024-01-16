@@ -1,21 +1,10 @@
-// ** React Imports
 import { useState } from 'react'
-
-// ** MUI Imports
 import Fab from '@mui/material/Fab'
 import { styled } from '@mui/material/styles'
 import Box, { BoxProps } from '@mui/material/Box'
-
-// ** Icon Imports
 import Icon from 'src/@core/components/icon'
-
-// ** Theme Config Import
 import themeConfig from 'src/configs/themeConfig'
-
-// ** Type Import
 import { LayoutProps } from 'src/@core/layouts/types'
-
-// ** Components
 import AppBar from './components/vertical/appBar'
 import Customizer from 'src/@core/components/customizer'
 import Navigation from './components/vertical/navigation'
@@ -47,20 +36,14 @@ const ContentWrapper = styled('main')(({ theme }) => ({
 }))
 
 const VerticalLayout = (props: LayoutProps) => {
-  // ** Props
   const { hidden, settings, children, scrollToTop, footerProps, contentHeightFixed, verticalLayoutProps } = props
-
-  // ** Vars
   const { skin, navHidden, contentWidth } = settings
   const { navigationSize, disableCustomizer, collapsedNavigationSize } = themeConfig
   const navWidth = navigationSize
   const navigationBorderWidth = skin === 'bordered' ? 1 : 0
   const collapsedNavWidth = collapsedNavigationSize
-
-  // ** States
   const [navVisible, setNavVisible] = useState<boolean>(false)
 
-  // ** Toggle Functions
   const toggleNavVisibility = () => setNavVisible(!navVisible)
 
   return (
