@@ -1,10 +1,5 @@
-// ** React Imports
 import { useEffect, Fragment } from 'react'
-
-// ** Next Import
 import { useRouter } from 'next/router'
-
-// ** MUI Imports
 import Chip from '@mui/material/Chip'
 import Collapse from '@mui/material/Collapse'
 import ListItem from '@mui/material/ListItem'
@@ -13,27 +8,14 @@ import Typography from '@mui/material/Typography'
 import Box, { BoxProps } from '@mui/material/Box'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemButton from '@mui/material/ListItemButton'
-
-// ** Third Party Imports
 import clsx from 'clsx'
-
-// ** Icon Imports
 import Icon from 'src/@core/components/icon'
-
-// ** Configs Import
 import themeConfig from 'src/configs/themeConfig'
-
-// ** Utils
 import { hasActiveChild, removeChildren } from 'src/@core/layouts/utils'
-
-// ** Type Import
 import { NavGroup, LayoutProps } from 'src/@core/layouts/types'
-
-// ** Custom Components Imports
 import VerticalNavItems from './VerticalNavItems'
 import UserIcon from 'src/layouts/components/UserIcon'
 import Translations from 'src/layouts/components/Translations'
-import CanViewNavGroup from 'src/layouts/components/acl/CanViewNavGroup'
 
 interface Props {
   item: NavGroup
@@ -180,7 +162,6 @@ const VerticalNavGroup = (props: Props) => {
   const menuGroupCollapsedStyles = navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 }
 
   return (
-    <CanViewNavGroup navGroup={item}>
       <Fragment>
         <ListItem
           disablePadding
@@ -288,7 +269,6 @@ const VerticalNavGroup = (props: Props) => {
           </Collapse>
         </ListItem>
       </Fragment>
-    </CanViewNavGroup>
   )
 }
 

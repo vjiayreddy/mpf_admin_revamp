@@ -1,26 +1,30 @@
 // ** Type import
-import { VerticalNavItemsType } from 'src/@core/layouts/types'
+import { VerticalNavItemsType } from "src/@core/layouts/types";
+import { APP_ROUTES } from "src/configs/routes";
 
 const navigation = (): VerticalNavItemsType => {
   return [
     {
-      title: 'Home',
-      path: '/home',
-      icon: 'mdi:home-outline',
+      title: "Dashboards",
+      icon: "mdi:home-outline",
+      badgeContent: "new",
+      badgeColor: "error",
+      children: [
+        {
+          title: "Analytics",
+          path: "/dashboards/analytics",
+        },
+      ],
     },
     {
-      title: 'Second Page',
-      path: '/second-page',
-      icon: 'mdi:email-outline',
+      sectionTitle: "Modules",
     },
     {
-      path: '/acl',
-      action: 'read',
-      subject: 'acl-page',
-      title: 'Access Control',
-      icon: 'mdi:shield-outline',
-    }
-  ]
-}
+      title: "Role Management",
+      icon: "mdi:shield-outline",
+      path: APP_ROUTES.ROLE_MANAGEMENT,
+    },
+  ];
+};
 
-export default navigation
+export default navigation;
