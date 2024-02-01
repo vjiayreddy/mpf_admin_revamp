@@ -1,9 +1,13 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import PageHeader from "src/@core/components/page-header";
+import { useGetAllTeamMembers } from "src/apollo/hooks/useGetAllTeamMembers";
 import RoleCards from "src/views/pages/roles/RoleCards";
+import TeamMembersList from "src/views/pages/roles/Table";
 
 const RolesComponent = () => {
+  const { teamMembersData, loading } = useGetAllTeamMembers();
+
   return (
     <Grid container spacing={6}>
       <PageHeader
@@ -21,7 +25,9 @@ const RolesComponent = () => {
       </Grid>
       <PageHeader
         title={
-          <Typography variant="h5">Total users with their roles</Typography>
+          <Typography variant="h5">
+            Total Team Members with their roles
+          </Typography>
         }
         subtitle={
           <Typography variant="body2">
@@ -31,7 +37,7 @@ const RolesComponent = () => {
         }
       />
       <Grid item xs={12}>
-
+        <TeamMembersList rows={teamMembersData} loading={loading} />
       </Grid>
     </Grid>
   );

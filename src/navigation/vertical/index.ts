@@ -1,5 +1,6 @@
 // ** Type import
 import { VerticalNavItemsType } from "src/@core/layouts/types";
+import { APP_ROUTES } from "src/configs/routes";
 
 const navigation = (): VerticalNavItemsType => {
   return [
@@ -19,28 +20,9 @@ const navigation = (): VerticalNavItemsType => {
       sectionTitle: "Modules",
     },
     {
-      title: "Users",
-      icon: "mdi:account-outline",
-      children: [
-        {
-          title: "All Users",
-          path: "/apps/user/list",
-        },
-      ],
-    },
-    {
-      title: "Roles",
+      title: "Role Management",
       icon: "mdi:shield-outline",
-      children: [
-        {
-          title: "Roles",
-          path: "/apps/roles",
-        },
-        {
-          title: "Permissions",
-          path: "/apps/permissions",
-        },
-      ],
+      path: APP_ROUTES.ROLE_MANAGEMENT,
     },
   ];
 };

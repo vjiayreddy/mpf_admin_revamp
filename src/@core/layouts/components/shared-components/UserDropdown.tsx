@@ -3,7 +3,7 @@ import { useState, SyntheticEvent, Fragment } from "react";
 
 // ** Next Import
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
+import { useSession,signOut } from "next-auth/react";
 
 // ** MUI Imports
 import Box from "@mui/material/Box";
@@ -79,7 +79,7 @@ const UserDropdown = (props: Props) => {
   };
 
   const handleLogout = () => {
-    logout();
+    signOut();
     handleDropdownClose();
   };
 

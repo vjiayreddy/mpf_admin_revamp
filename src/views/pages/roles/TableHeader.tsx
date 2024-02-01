@@ -1,60 +1,84 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
-import TextField from '@mui/material/TextField'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from "src/@core/components/icon";
 
 interface TableHeaderProps {
-  plan: string
-  value: string
-  handleFilter: (val: string) => void
-  handlePlanChange: (e: SelectChangeEvent) => void
+  plan: string;
+  value: string;
+  handleFilter: (val: string) => void;
+  handlePlanChange: (e: SelectChangeEvent) => void;
+  handleAddNew?: () => void;
 }
 
 const TableHeader = (props: TableHeaderProps) => {
   // ** Props
-  const { plan, handlePlanChange, handleFilter, value } = props
+  const { plan, handlePlanChange, handleFilter, value, handleAddNew } = props;
 
   return (
-    <Box sx={{ p: 5, pb: 3, display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
-      <Button sx={{ mr: 4, mb: 2 }} color='secondary' variant='outlined' startIcon={<Icon icon='mdi:export-variant' />}>
+    <Box
+      sx={{
+        p: 5,
+        pb: 3,
+        display: "flex",
+        flexWrap: "wrap",
+        alignItems: "center",
+        justifyContent: "space-between",
+      }}
+    >
+      <Button
+        sx={{ mr: 4, mb: 2 }}
+        color="secondary"
+        variant="outlined"
+        startIcon={<Icon icon="mdi:export-variant" />}
+      >
         Export
       </Button>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
+      <Box sx={{ display: "flex", flexWrap: "wrap", alignItems: "center" }}>
         <TextField
-          size='small'
+          size="small"
           value={value}
-          placeholder='Search User'
+          placeholder="Search for User..."
           sx={{ mr: 6, mb: 2 }}
-          onChange={e => handleFilter(e.target.value)}
+          onChange={(e) => handleFilter(e.target.value)}
         />
-        <FormControl size='small' sx={{ mb: 2 }}>
-          <InputLabel id='plan-select'>Select Plan</InputLabel>
+        <FormControl size="small" sx={{ mb: 2 }}>
+          <InputLabel id="role-select">Select Role</InputLabel>
           <Select
-            size='small'
+            size="small"
             value={plan}
-            id='select-plan'
-            label='Select Plan'
-            labelId='plan-select'
+            id="select-role"
+            label="Select Role"
+            labelId="role-select"
             onChange={handlePlanChange}
-            inputProps={{ placeholder: 'Select Plan' }}
+            inputProps={{ placeholder: "Select Role" }}
           >
-            <MenuItem value=''>Select Plan</MenuItem>
-            <MenuItem value='basic'>Basic</MenuItem>
-            <MenuItem value='company'>Company</MenuItem>
-            <MenuItem value='enterprise'>Enterprise</MenuItem>
-            <MenuItem value='team'>Team</MenuItem>
+            <MenuItem value="">Select Role</MenuItem>
+            <MenuItem value="basic">Manager</MenuItem>
+            <MenuItem value="basic">Personal Stylist</MenuItem>
+            <MenuItem value="company">Sales Person</MenuItem>
+            <MenuItem value="company">Operator</MenuItem>
           </Select>
         </FormControl>
+        <Button
+          sx={{ ml: 4, mb: 2 }}
+          color="primary"
+          onClick={handleAddNew}
+          variant="contained"
+          startIcon={<Icon icon="ic:baseline-add" />}
+        >
+          New Member
+        </Button>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default TableHeader
+export default TableHeader;

@@ -1,6 +1,6 @@
 import FormControl, { FormControlProps } from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
-import TextField from "@mui/material/TextField";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
 import React from "react";
 import {
   Control,
@@ -12,8 +12,10 @@ import {
 
 interface FormTextFieldProps {
   id?: string;
+  size?: "medium" | "small";
   formControlProps?: FormControlProps;
   placeholder?: string;
+  fullWidth?: boolean;
   label?: string;
   name: string;
   rules?:
@@ -29,6 +31,7 @@ interface FormTextFieldProps {
   startAdornment?: React.ReactNode;
   variant?: "standard" | "outlined" | "filled" | undefined;
   autoFocus?: boolean;
+  defaultValue?: string;
 }
 
 const FormTextField = ({
@@ -44,18 +47,24 @@ const FormTextField = ({
   endAdornment,
   startAdornment,
   variant,
-  autoFocus
+  autoFocus,
+  fullWidth,
+  size,
+  defaultValue,
 }: FormTextFieldProps) => {
   return (
-    <FormControl fullWidth sx={{ mb: 4 }} {...formControlProps}>
+    <FormControl fullWidth={fullWidth} sx={{ mb: 4 }} {...formControlProps}>
       <Controller
         name={name}
         control={control}
+        defaultValue={defaultValue || ""}
         rules={rules}
         render={({ field: { value, onChange, onBlur } }) => (
           <TextField
             variant={variant}
             id={id}
+            size={size}
+            fullWidth={fullWidth}
             autoFocus={autoFocus}
             label={label}
             placeholder={placeholder}
